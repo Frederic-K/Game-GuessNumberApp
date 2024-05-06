@@ -1,0 +1,15 @@
+.contact {
+  &__title {
+    @include text-radial-gradient-Text;
+  }
+}
+
+@for $contact-nb from 1 to 7 {
+  .contact__type--#{$contact-nb} {
+    opacity: 0;
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: ($contact-nb * 100)+0ms;
+  }
+}

@@ -1,0 +1,13 @@
+.navMenu {
+  &__link {
+    &:hover {
+      @include text-radial-gradient-LinkHover;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    &--active {
+      @include text-radial-gradient-LinkActive;
+    }
+  }
+}

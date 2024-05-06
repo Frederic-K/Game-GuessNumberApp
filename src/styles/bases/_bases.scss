@@ -1,0 +1,7 @@
+.paper {
+  &__bg {
+    &--radial {
+      @include form-bg-radial;
+    }
+  }
+}

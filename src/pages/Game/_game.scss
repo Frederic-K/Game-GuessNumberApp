@@ -1,0 +1,21 @@
+.game {
+  &__title {
+    @include text-radial-gradient-Text;
+  }
+}
+.resp {
+  &__icon {
+    &--tooLow {
+      width: 60px;
+    }
+    &--tooHight {
+      width: 60px;
+    }
+    &--win {
+      width: 100px;
+    }
+    &--invalid {
+      width: 60px;
+    }
+  }
+}
