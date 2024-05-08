@@ -4,6 +4,8 @@ import { Avatar, Box, Container, Link, Paper, Typography } from '@mui/material'
 import { contactList } from '../../services/data/contactList'
 // Assets
 import cimentDarkBckground from '../../assets/Background/cimentDarkWallpaper.jpg'
+// Components
+import Typewriter from '../../components/Typewriter/Typewriter'
 
 export default function Contacts() {
   return (
@@ -42,9 +44,10 @@ export default function Contacts() {
               border: '1px solid black',
               borderRadius: '5px',
               p: 1,
+              animation: 'fadeIn 1.5s forwards',
             }}
           >
-            Contact
+            <Typewriter text="Contact" delay={100} />
           </Typography>
         </Paper>
         <Paper
@@ -55,6 +58,7 @@ export default function Contacts() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-evenly',
+            animation: 'fadeIn 1.5s forwards',
           }}
         >
           {contactList.map((el) => (

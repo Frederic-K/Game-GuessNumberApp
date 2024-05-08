@@ -13,6 +13,7 @@
     }
     &--win {
       width: 100px;
+      animation: RotateGrowUp 0.5s ease-out forwards;
     }
     &--invalid {
       width: 60px;

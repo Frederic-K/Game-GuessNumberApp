@@ -1,5 +1,7 @@
 .home {
   &__title {
     @include text-radial-gradient-Text;
+    background-size: 200% auto;
+    animation: wavyTextColor 5s linear reverse infinite;
   }
 }

@@ -16,6 +16,7 @@ import {
   // clearScore,
   bestScoreSelector,
 } from '../../features/BestScore/bestScoreSlice'
+import { modeThemeSelector } from '../../features/ModeTheme/modeThemeSlice'
 // Service
 import MagicNumber from '../../services/MagicNumber/MagicNumber'
 import CheckAnswer from '../../services/CheckAnswer/CheckAnswer'
@@ -29,6 +30,7 @@ import {
   IconButton,
   Avatar,
   TextField,
+  Link,
 } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
@@ -40,6 +42,8 @@ import iconWin from '../../assets/Icons/winCup.png'
 import iconInvalid from '../../assets/Icons/invalid.png'
 import cimentDarkBckground from '../../assets/Background/cimentDarkWallpaper.jpg'
 import FKLogo from '../../assets/Logo/LogoFK-waterpx-red3-100px.png'
+// Components
+import Typewriter from '../../components/Typewriter/Typewriter'
 
 const Game = () => {
   // Router
@@ -50,6 +54,7 @@ const Game = () => {
   const maxNum = parseInt(useSelector(maxNumberSlector))
   const counter = useSelector(counterSelector)
   const bestScore = useSelector(bestScoreSelector)
+  const { modeTheme } = useSelector(modeThemeSelector)
 
   // Set message
   const [response, setResponse] = useState('')
@@ -150,7 +155,9 @@ const Game = () => {
               textAlign: 'center',
             }}
           >
-            Welcome <br /> {name}
+            <Typewriter text="Welcome" delay={100} />
+            <br />
+            <Typewriter text={name} delay={100} />
           </Typography>
         </Box>
         <Typography
@@ -199,10 +206,16 @@ const Game = () => {
                 width: '100px',
                 height: '40px',
                 ml: '10px',
-                color: 'white',
               }}
             >
-              <SendIcon />
+              <SendIcon
+                sx={{
+                  color: `${modeTheme !== 'dark' ? 'white' : 'dark'}`,
+                  '&:hover': {
+                    animation: 'rotateX 1s forwards',
+                  },
+                }}
+              />
             </Button>
             <Box>
               <IconButton
@@ -211,7 +224,9 @@ const Game = () => {
                 onClick={(e) => {
                   handleRestartClick(e)
                 }}
-                sx={{ color: 'white' }}
+                sx={{
+                  color: `${modeTheme !== 'dark' ? 'white' : 'dark'}`,
+                }}
               >
                 <Avatar
                   sx={{
@@ -220,7 +235,13 @@ const Game = () => {
                     bgcolor: 'primary.main',
                   }}
                 >
-                  <RestartAltIcon />
+                  <RestartAltIcon
+                    sx={{
+                      '&:hover': {
+                        animation: 'rotateCounterclockwise 1s forwards',
+                      },
+                    }}
+                  />
                 </Avatar>
               </IconButton>
               <IconButton
@@ -229,7 +250,6 @@ const Game = () => {
                 onClick={() => {
                   handleBckHomeClick()
                 }}
-                sx={{ color: 'white' }}
               >
                 <Avatar
                   sx={{
@@ -238,7 +258,9 @@ const Game = () => {
                     bgcolor: 'primary.main',
                   }}
                 >
-                  <HomeIcon />
+                  <HomeIcon
+                    sx={{ '&:hover': { animation: 'rotateY 0.5s forwards' } }}
+                  />
                 </Avatar>
               </IconButton>
             </Box>
@@ -324,14 +346,23 @@ const Game = () => {
               </Typography>
             </Box>
           ) : (
-            <Box aria-label="logo" sx={{ my: '20px' }}>
-              <Avatar
-                className="home__logo"
-                alt="Frédéroc Kreuder Logo"
-                src={FKLogo}
-                sx={{ width: '70px', height: '70px', opacity: '0.6' }}
-              />
-            </Box>
+            <Button
+              aria-label="logo"
+              sx={{
+                my: '20px',
+                p: '0px',
+                '&:hover': { animation: 'stretchOut 0.5s forwards' },
+              }}
+            >
+              <Link href={'https://github.com/Frederic-K/Game-GuessNumberApp'}>
+                <Avatar
+                  className="home__logo"
+                  alt="Frédéroc Kreuder Logo"
+                  src={FKLogo}
+                  sx={{ width: '70px', height: '70px', opacity: '0.6' }}
+                />
+              </Link>
+            </Button>
           )}
         </Box>
         <Typography

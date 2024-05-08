@@ -10,11 +10,12 @@ import {
   Avatar,
   IconButton,
   TextField,
+  Link,
 } from '@mui/material'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 // Redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   addPlayerName,
   clearPlayerName,
@@ -23,6 +24,7 @@ import {
   addMaxNumber,
   clearMaxNumber,
 } from '../../features/MaxNumber/maxNumberSlice'
+import { modeThemeSelector } from '../../features/ModeTheme/modeThemeSlice'
 // Router
 import { useNavigate } from 'react-router-dom'
 // Assets
@@ -32,7 +34,10 @@ import FKLogo from '../../assets/Logo/LogoFK-waterpx-red3-100px.png'
 import CheckInputValues from '../../services/CheckInputValues/CheckInputValues'
 
 const Home = () => {
+  // Redux
   const dispatch = useDispatch()
+  const { modeTheme } = useSelector(modeThemeSelector)
+  // Router
   const navigate = useNavigate()
 
   // Validation data state
@@ -118,6 +123,7 @@ const Home = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          animation: 'fadeIn 1.5s forwards',
         }}
       >
         <Typography
@@ -167,14 +173,19 @@ const Home = () => {
             onChange={(e) => handleChangeInput(e)}
           />
         </Box>
-        <Box aria-label="logo">
-          <Avatar
-            className="home__logo"
-            alt="Frédéroc Kreuder Logo"
-            src={FKLogo}
-            sx={{ width: '50px', height: '50px', opacity: '0.6' }}
-          />
-        </Box>
+        <Button
+          aria-label="logo"
+          sx={{ p: '0px', '&:hover': { animation: 'squish-in 0.5s forwards' } }}
+        >
+          <Link href={'https://github.com/Frederic-K/Game-GuessNumberApp'}>
+            <Avatar
+              className="home__logo"
+              alt="Frédéroc Kreuder Logo"
+              src={FKLogo}
+              sx={{ width: '50px', height: '50px', opacity: '0.6' }}
+            />
+          </Link>
+        </Button>
         <Typography
           variant="h6"
           className="home__title"
@@ -204,18 +215,20 @@ const Home = () => {
             type="submit"
             variant="contained"
             aria-label="Start game"
-            sx={{ width: '140px', height: '40px', ml: '10px', color: 'white' }}
+            sx={{ width: '140px', height: '40px', ml: '10px' }}
           >
-            <PlayCircleOutlineIcon />
+            <PlayCircleOutlineIcon
+              sx={{
+                color: `${modeTheme !== 'dark' ? 'white' : 'dark'}`,
+                '&:hover': { animation: 'rotateClockwise 1s forwards' },
+              }}
+            />
           </Button>
           <IconButton
             type="reset"
             aria-label="Restart"
             onClick={() => {
               handelRestartClick()
-            }}
-            sx={{
-              color: 'white',
             }}
           >
             <Avatar
@@ -225,7 +238,13 @@ const Home = () => {
                 bgcolor: 'primary.main',
               }}
             >
-              <RestartAltIcon />
+              <RestartAltIcon
+                sx={{
+                  '&:hover': {
+                    animation: 'rotateCounterclockwise 1s forwards',
+                  },
+                }}
+              />
             </Avatar>
           </IconButton>
         </Box>

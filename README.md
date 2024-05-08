@@ -1,8 +1,11 @@
 # Game-GuessNumberApp
 
-A classic little coding game where you have to guess a secret number. Coding with love, React, MUI and fun while downloading the patch for my favorite game. And because my son ask me : 'are able to code a little guess number game, but not a ... Atari 2600 looks like ^^ ?'
+A classic little coding game where you have to guess a secret number. Coding with love, React, MUI and fun while downloading the patch for my favorite game ^^.
 
-![banner](./src/assets/Readme/ReadmeScreenshot.png)
+<!-- ![banner](./src/assets/Readme/ReadmeScreenshot.png) -->
+<p align="center" width="100%">
+    <img width="65%" src="./src/assets/Readme/ReadmeScreenshot.png"> 
+</p>
 
 # Technologies / features
 
