@@ -21,6 +21,7 @@ const Header = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        zIndex: '1',
         backgroundImage: `url(${bannerBckground})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
